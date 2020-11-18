@@ -2,48 +2,61 @@
 from decimal import *
 from sys import argv
 
-
-
-script, annual_objective, guest_average, initial_investment = argv
+script, annual_objective, guest_average, initial_investment, monthly_contribution, reinvest_profits = argv
 
 annual_objective = Decimal(annual_objective)
 guest_average = Decimal(guest_average)
 initial_investment = Decimal(initial_investment)
+monthly_contribution = Decimal(monthly_contribution)
+reinvest_profits = reinvest_profits == "True"
+
 
 def years():
     return Decimal(5)
+
 
 def interest_rate():
     rate = Decimal(4)
     return rate / Decimal(100)
 
+
 def kuspit():
     rate = Decimal(0.63)
     return rate / Decimal(100)
+
 
 def shared_commission(kuspit):
     percent = Decimal(30)
     return Decimal(kuspit) * Decimal(percent / Decimal(100))
 
+
 def monthly_objective(annual_objective):
     return Decimal(annual_objective) / Decimal(12)
+
 
 def total_assets(monthly_objective, shared_commission):
     return monthly_objective / (shared_commission / Decimal(12))
 
+
 def total_guests(total_assets, guest_average):
     return total_assets / Decimal(guest_average)
+
 
 def annual_guests(total_guests, years):
     return total_guests / years
 
+
 def monthly_guests(annual_guests):
     return Decimal(annual_guests / Decimal(12)).quantize(Decimal('1.'), rounding=ROUND_UP)
+
+def membership_cost():
+    return Decimal(-200)
 
 
 class Basics:
     def __init__(self, annual_objective, guest_average, initial_investment, shared_commission, kuspit,
-                 monthly_objective, total_assets, total_guests, years, interest_rate, annual_guests, monthly_guests):
+                 monthly_objective, total_assets, total_guests, years, interest_rate, annual_guests,
+                 monthly_guests, monthly_contribution, reinvest_profits, membership_cost):
         self.__annual_objective = annual_objective
         self.__guest_average = guest_average
         self.__initial_investment = initial_investment
@@ -56,6 +69,9 @@ class Basics:
         self.__total_guests = total_guests
         self.__annual_guests = annual_guests
         self.__monthly_guests = monthly_guests
+        self.__monthly_contribution = monthly_contribution
+        self.__reinvest_profits = reinvest_profits
+        self.__membership_cost = membership_cost
 
     def check_type(self):
         print(f"annual objective: {type(self.__annual_objective)}")
@@ -70,7 +86,8 @@ class Basics:
         print(f"total guests: {type(self.__total_guests)}")
         print(f"annual guests: {type(self.__annual_guests)}")
         print(f"monthly guests: {type(self.__monthly_guests)}")
-
+        print(f"monthly contribution: {type(self.__monthly_contribution)}")
+        print(f"reinvest profits: {type(self.__reinvest_profits)}")
 
     def display(self):
         print(f"Objetivo Anual: {self.__annual_objective.quantize(Decimal('.0001'))}")
@@ -84,6 +101,12 @@ class Basics:
         print(f"Aportación Mensual:\t\t${self.__kuspit.quantize(Decimal('.0001'))}")
         print(f"Comisión sowos (sowos +):\t${self.__shared_commission.quantize(Decimal('.0001'))}")
 
+    def generate_periods(self):
+        period_number = int(self.__years * 12)
+
+        for i in range(0, period_number):
+            pass
+
 
 if __name__ == '__main__':
     shared_commission = shared_commission(kuspit())
@@ -94,6 +117,10 @@ if __name__ == '__main__':
     monthly_guests = monthly_guests(annual_guests)
 
     Basics = Basics(annual_objective, guest_average, initial_investment, shared_commission, kuspit(), monthly_objective,
-           total_assets, total_guests, years(), interest_rate(), annual_guests, monthly_guests)
+                    total_assets, total_guests, years(), interest_rate(), annual_guests, monthly_guests,
+                    monthly_contribution, reinvest_profits)
 
     Basics.display()
+    Basics.check_type()
+    if reinvest_profits:
+        print("CHEESE")
