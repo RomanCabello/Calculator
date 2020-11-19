@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from decimal import *
 from sys import argv
+from Calculator.Periods import Period
 
 script, annual_objective, guest_average, initial_investment, monthly_contribution, reinvest_profits = argv
 
@@ -11,8 +12,12 @@ monthly_contribution = Decimal(monthly_contribution)
 reinvest_profits = reinvest_profits == "True"
 
 
-def years():
+def years_investment():
     return Decimal(5)
+
+
+def years():
+    return Decimal(10)
 
 
 def interest_rate():
@@ -49,13 +54,14 @@ def annual_guests(total_guests, years):
 def monthly_guests(annual_guests):
     return Decimal(annual_guests / Decimal(12)).quantize(Decimal('1.'), rounding=ROUND_UP)
 
+
 def membership_cost():
     return Decimal(-200)
 
 
 class Basics:
     def __init__(self, annual_objective, guest_average, initial_investment, shared_commission, kuspit,
-                 monthly_objective, total_assets, total_guests, years, interest_rate, annual_guests,
+                 monthly_objective, total_assets, total_guests, years, years_investment, interest_rate, annual_guests,
                  monthly_guests, monthly_contribution, reinvest_profits, membership_cost):
         self.__annual_objective = annual_objective
         self.__guest_average = guest_average
@@ -72,22 +78,7 @@ class Basics:
         self.__monthly_contribution = monthly_contribution
         self.__reinvest_profits = reinvest_profits
         self.__membership_cost = membership_cost
-
-    def check_type(self):
-        print(f"annual objective: {type(self.__annual_objective)}")
-        print(f"guest average: {type(self.__guest_average)}")
-        print(f"initial investment: {type(self.__initial_investment)}")
-        print(f"kuspit: {type(self.__kuspit)}")
-        print(f"years: {type(self.__years)}")
-        print(f"interest rate: {type(self.__interest_rate)}")
-        print(f"shared commission: {type(self.__shared_commission)}")
-        print(f"monthly objective: {type(self.__monthly_objective)}")
-        print(f"total assets: {type(self.__total_assets)}")
-        print(f"total guests: {type(self.__total_guests)}")
-        print(f"annual guests: {type(self.__annual_guests)}")
-        print(f"monthly guests: {type(self.__monthly_guests)}")
-        print(f"monthly contribution: {type(self.__monthly_contribution)}")
-        print(f"reinvest profits: {type(self.__reinvest_profits)}")
+        self.__years_investment = years_investment
 
     def display(self):
         print(f"Objetivo Anual: {self.__annual_objective.quantize(Decimal('.0001'))}")
@@ -104,8 +95,20 @@ class Basics:
     def generate_periods(self):
         period_number = int(self.__years * 12)
 
-        for i in range(0, period_number):
-            pass
+        periods = []
+
+        first_period = Period(1, self.__interest_rate, self.__years_investment, self.__reinvest_profits,
+                              self.__monthly_contribution, self.__monthly_guests, self.__guest_average,
+                              self.__shared_commission, self.__membership_cost, 50,
+                              initial_investment=self.__initial_investment)
+        periods.append(first_period)
+        first_period.display_period()
+
+        for i in range(1, period_number):
+            j = i - 1
+            next_period = periods[j].create_next()
+            periods.append(next_period)
+            next_period.display_period()
 
 
 if __name__ == '__main__':
@@ -117,10 +120,8 @@ if __name__ == '__main__':
     monthly_guests = monthly_guests(annual_guests)
 
     Basics = Basics(annual_objective, guest_average, initial_investment, shared_commission, kuspit(), monthly_objective,
-                    total_assets, total_guests, years(), interest_rate(), annual_guests, monthly_guests,
-                    monthly_contribution, reinvest_profits)
+                    total_assets, total_guests, years(), years_investment(), interest_rate(), annual_guests, monthly_guests,
+                    monthly_contribution, reinvest_profits, membership_cost())
 
     Basics.display()
-    Basics.check_type()
-    if reinvest_profits:
-        print("CHEESE")
+    Basics.generate_periods()

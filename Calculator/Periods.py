@@ -43,7 +43,7 @@ class Period:
             return self.__previous_initial_investment_interests + self.__monthly_contribution
 
     def initial_investment_interests(self):
-        return self.__initial_investment * (1 + (self.__interest_rate / 12))
+        return self.initial_investment() * (1 + (self.__interest_rate / 12))
 
     def profits_via_referrals(self):
         if self.phase() == 1:
@@ -88,3 +88,14 @@ class Period:
         previous_interests = self.interests()
         previous_final_balance = self.final_balance()
         previous_initial_investment_interests = self.initial_investment_interests()
+        next = Period(period, interest_rate, years, reinvest_profits, monthly_contribution, monthly_guests,
+                      guest_average, shared_commission, membership_cost, points, previous_accumulated_profits,
+                      previous_interests, previous_final_balance, previous_initial_investment_interests)
+
+        return next
+
+    def display_period(self):
+        print(f"period: {self.__period}\t")
+        print(f"monthly profits: {self.monthly_profits().quantize(Decimal('.0001'))}")
+        print(f"accumulated profits {self.accumulated_profits().quantize(Decimal('.0001'))}")
+        print("\n")
