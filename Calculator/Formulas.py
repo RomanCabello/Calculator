@@ -13,10 +13,12 @@ reinvest_profits = reinvest_profits == "True"
 
 
 def years_investment():
+    '''¿Cuántos años dura la '''
     return Decimal(5)
 
 
 def years():
+    '''Es la cantidad de años que proyectará la calculadora'''
     return Decimal(10)
 
 
@@ -82,16 +84,16 @@ class Basics:
         self.__points = points
 
     def display(self):
-        print(f"Objetivo Anual: {self.__annual_objective.quantize(Decimal('.0001'))}")
-        print(f"Promedio de Invitados: {self.__guest_average.quantize(Decimal('.0001'))} \n")
-        print(f"objetivo mensual:\t\t ${self.__monthly_objective.quantize(Decimal('.0001'))}")
-        print(f"Activos totales:\t\t ${self.__total_assets.quantize(Decimal('.0001'))}")
-        print(f"Invitados totales:\t\t ${self.__total_guests.quantize(Decimal('.0001'))}")
-        print(f"Invitados anuales:\t\t ${self.__annual_guests.quantize(Decimal('.0001'))}")
-        print(f"Invitados mensuales:\t\t ${self.__monthly_guests.quantize(Decimal('.0001'))}\n")
-        print(f"Inversion inicial:\t\t${self.__initial_investment.quantize(Decimal('.0001'))}")
-        print(f"Aportación Mensual:\t\t${self.__kuspit.quantize(Decimal('.0001'))}")
-        print(f"Comisión sowos (sowos +):\t${self.__shared_commission.quantize(Decimal('.0001'))}")
+        print(f"Objetivo Anual: {self.__annual_objective.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
+        print(f"Promedio de Invitados: {self.__guest_average.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)} \n")
+        print(f"objetivo mensual:\t\t ${self.__monthly_objective.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
+        print(f"Activos totales:\t\t ${self.__total_assets.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
+        print(f"Invitados totales:\t\t ${self.__total_guests.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
+        print(f"Invitados anuales:\t\t ${self.__annual_guests.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
+        print(f"Invitados mensuales:\t\t ${self.__monthly_guests.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}\n")
+        print(f"Inversion inicial:\t\t${self.__initial_investment.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
+        print(f"Aportación Mensual:\t\t${self.__kuspit.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
+        print(f"Comisión sowos (sowos +):\t${self.__shared_commission.quantize(Decimal('.0001'), rounding=ROUND_HALF_EVEN)}")
 
     def generate_periods(self):
         period_number = int(self.__years * 12)
