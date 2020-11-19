@@ -62,7 +62,7 @@ def membership_cost():
 class Basics:
     def __init__(self, annual_objective, guest_average, initial_investment, shared_commission, kuspit,
                  monthly_objective, total_assets, total_guests, years, years_investment, interest_rate, annual_guests,
-                 monthly_guests, monthly_contribution, reinvest_profits, membership_cost):
+                 monthly_guests, monthly_contribution, reinvest_profits, membership_cost, points):
         self.__annual_objective = annual_objective
         self.__guest_average = guest_average
         self.__initial_investment = initial_investment
@@ -79,6 +79,7 @@ class Basics:
         self.__reinvest_profits = reinvest_profits
         self.__membership_cost = membership_cost
         self.__years_investment = years_investment
+        self.__points = points
 
     def display(self):
         print(f"Objetivo Anual: {self.__annual_objective.quantize(Decimal('.0001'))}")
@@ -99,7 +100,7 @@ class Basics:
 
         first_period = Period(1, self.__interest_rate, self.__years_investment, self.__reinvest_profits,
                               self.__monthly_contribution, self.__monthly_guests, self.__guest_average,
-                              self.__shared_commission, self.__membership_cost, 50,
+                              self.__shared_commission, self.__membership_cost, self.__points,
                               initial_investment=self.__initial_investment)
         periods.append(first_period)
         first_period.display_period()
@@ -121,7 +122,7 @@ if __name__ == '__main__':
 
     Basics = Basics(annual_objective, guest_average, initial_investment, shared_commission, kuspit(), monthly_objective,
                     total_assets, total_guests, years(), years_investment(), interest_rate(), annual_guests, monthly_guests,
-                    monthly_contribution, reinvest_profits, membership_cost())
+                    monthly_contribution, reinvest_profits, membership_cost(), 50)
 
     Basics.display()
     Basics.generate_periods()
