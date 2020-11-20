@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 from decimal import *
-from calculator.kuspit import Kuspit
+from calculator.percentage import Percentage
 
 class SharedCommission:
-    def __init__(self, kuspit: Kuspit, percent: Decimal):
-        self.__kuspit = kuspit.calculate()
-        self.__percent = percent
+    def __init__(self, kuspit_commission: Percentage, sowos_commission: Decimal):
+        self.__kuspit_commission = kuspit_commission
+        self.__sowos_commission = sowos_commission
 
     def calculate(self):
-        result = Decimal(self.__kuspit) * Decimal(self.__percent / Decimal(100))
+        _kuspit_commission = self.__kuspit_commission.calculate()
+        result = _kuspit_commission * self.__sowos_commission / Decimal(100)
         return result

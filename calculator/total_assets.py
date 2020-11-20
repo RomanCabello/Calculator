@@ -6,9 +6,11 @@ from calculator.shared_commission import SharedCommission
 
 class TotalAssets:
     def __init__(self, monthly_objective: MonthlyObjective, shared_commission: SharedCommission):
-        self.__monthly_objective = monthly_objective.calculate()
-        self.__shared_commission = shared_commission.calculate()
+        self.__monthly_objective = monthly_objective
+        self.__shared_commission = shared_commission
 
     def calculate(self):
-        result = self.__monthly_objective / (self.__shared_commission / Decimal(12))
+        _monthly_objective = self.__monthly_objective.calculate()
+        _shared_commission = self.__shared_commission.calculate()
+        result = _monthly_objective / (_shared_commission / Decimal(12))
         return result

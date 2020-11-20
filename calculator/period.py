@@ -79,7 +79,7 @@ class PeriodFactory:
     def referred_assets(self):
         return self.__period * self.__monthly_guests * self.__guest_average
 
-    def create_next(self):
+    def create_next(self):  
         period = self.__period + 1
         interest_rate = self.__interest_rate
         years = self.__years

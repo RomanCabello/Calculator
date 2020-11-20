@@ -1,4 +1,4 @@
 #!/usr/bin/env python
-from calculator.calculator import *
+from calculator.sowos_calculator import *
 
-calculator = Basics()
+calculator = SowosCalculator()

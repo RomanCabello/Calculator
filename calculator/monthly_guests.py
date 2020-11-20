@@ -5,8 +5,9 @@ from calculator.annual_guests import AnnualGuests
 
 class MonthlyGuests:
     def __init__(self, annual_guests: AnnualGuests):
-        self.__annual_guests = annual_guests.calculate()
+        self.__annual_guests = annual_guests
 
     def calculate(self):
-        result = Decimal(self.__annual_guests / Decimal(12)).quantize(Decimal('1.'))
+        _annual_guests = self.__annual_guests.calculate()
+        result = _annual_guests / Decimal(12)
         return result
