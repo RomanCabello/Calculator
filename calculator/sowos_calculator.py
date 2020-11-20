@@ -9,17 +9,6 @@ from calculator.annual_guests import AnnualGuests
 from calculator.monthly_guests import MonthlyGuests
 from calculator.points import Points
 
-annual_objective = Decimal(input("Please enter your annual objective"))
-guest_average = Decimal(input("Please enter the average investment of your guests"))
-initial_amount = Decimal(input("Please enter the initial amount you will invest"))
-monthly_contribution = Decimal(input("Please enter the amount you will be investing monthly"))
-reinvest_profits = input("Would you like to automatically reinvest your profits? (Y/N)")
-reinvest_profits = reinvest_profits == "Y"
-
-years_to_calculate = Decimal(input("Please enter the amount of years you wish to calculate"))
-duration_of_phase_1 = Decimal(input("Please enter the duration of phase 1 in years"))
-membership_cost = Decimal(0) - Decimal(input("Please enter the membership cost"))
-
 
 class SowosCalculator:
     def __init__(self,
@@ -32,7 +21,7 @@ class SowosCalculator:
                  total_assets: TotalAssets,
                  total_guests: TotalGuests,
                  years: Decimal,
-                 duration_of_phase_1: Decimal,
+                 phase1_years: Decimal,
                  interest_rate: Percentage,
                  annual_guests: AnnualGuests,
                  monthly_guests: MonthlyGuests,
@@ -55,7 +44,7 @@ class SowosCalculator:
         self.__monthly_contribution = monthly_contribution
         self.__reinvest_profits = reinvest_profits
         self.__membership_cost = membership_cost
-        self.__years_investment = duration_of_phase_1
+        self.__phase1_years = phase1_years
         self.__points = points
 
     def generate_periods(self, years):
@@ -68,7 +57,7 @@ class SowosCalculator:
 
         profits_via_referrals_variable = profits_via_referrals()
 
-        first_period = PeriodFactory(1, phase(1, duration_of_phase_1), self.__interest_rate, self.__years_investment,
+        first_period = PeriodFactory(1, phase(1, self.__phase1_years), self.__interest_rate, self.__phase1_years,
                                      self.__reinvest_profits, self.__monthly_contribution, self.__monthly_guests,
                                      self.__guest_average, self.__shared_commission, self.__membership_cost,
                                      self.__points, initial_investment_interests(initial_investment_variable,
