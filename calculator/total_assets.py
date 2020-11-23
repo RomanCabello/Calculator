@@ -8,6 +8,12 @@ from calculator.shared_commission import SharedCommission
 
 class TotalAssets:
     def __init__(self, monthly_objective: MonthlyObjective, shared_commission: SharedCommission):
+        if not isinstance(monthly_objective, MonthlyObjective):
+            raise ValueError(f"Parameter monthly_objective: {monthly_objective} is not an instance of MonthlyObjective")
+
+        if not isinstance(shared_commission, SharedCommission):
+            raise ValueError(f"Parameter shared_commission: {shared_commission} is not an instance of SharedCommission")
+
         self.__monthly_objective = monthly_objective
         self.__shared_commission = shared_commission
 

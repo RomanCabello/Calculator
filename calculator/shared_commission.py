@@ -4,8 +4,15 @@
 from decimal import *
 from calculator.percentage import Percentage
 
+
 class SharedCommission:
     def __init__(self, kuspit_commission: Percentage, sowos_commission: Decimal):
+        if not isinstance(kuspit_commission, Percentage):
+            raise ValueError(f"Parameter kuspit_commission: {kuspit_commission} is not an instance of Percentage")
+
+        if not isinstance(sowos_commission, Decimal):
+            raise ValueError(f"Parameter sowos_commission: {sowos_commission} is not an instance of Decimal")
+
         self.__kuspit_commission = kuspit_commission
         self.__sowos_commission = sowos_commission
 
