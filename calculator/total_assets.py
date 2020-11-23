@@ -1,4 +1,6 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 from decimal import *
 from calculator.monthly_objective import MonthlyObjective
 from calculator.shared_commission import SharedCommission

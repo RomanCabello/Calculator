@@ -1,4 +1,6 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 from calculator.period import *
 from calculator.percentage import Percentage
 from calculator.shared_commission import SharedCommission
