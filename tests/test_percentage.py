@@ -1,9 +1,15 @@
-import unittest
-
-from calculator.percentage import *
+# -*- coding: utf-8 -*-
 
 
-class TestPercentage(unittest.TestCase):
-    def test_calculate(self):
-        result = Percentage(Decimal(100)).calculate()
-        self.assertEqual(result, Decimal(1))
+from decimal import Decimal
+from unittest import TestCase
+
+from calculator import Percentage
+
+
+class TestPercentage(TestCase):
+    def test_percentage_calculation(self):
+        percent = Decimal(100)
+
+        percentage = Percentage(percent)
+        assert percentage.calculate() == Decimal(1)

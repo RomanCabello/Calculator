@@ -38,7 +38,7 @@ def profits_via_referrals(phase: int, monthly_guests, guest_average, period, sha
 
 
 class PeriodFactory:
-    def __init__(self, _period, phase, interest_rate, _years, reinvest_profits, monthly_contribution,
+    def __init__(self, period, phase, interest_rate, _years, reinvest_profits, monthly_contribution,
                  monthly_guests, guest_average, shared_commission, membership_cost, points, profits_via_referrals,
                  initial_investment_interests, previous_accumulated_profits=None, initial_investment=None):
         self.__period = _period

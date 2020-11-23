@@ -1,10 +1,15 @@
-import unittest
-from unittest.mock import MagicMock, call, patch
-
-from calculator.monthly_objective import *
+# -*- coding: utf-8 -*-
 
 
-class TestMonthlyObjective(unittest.TestCase):
-    def test_calculate(self):
-        result = MonthlyObjective(Decimal(12)).calculate()
-        self.assertEqual(result, Decimal(1))
+from decimal import Decimal
+from unittest import TestCase
+
+from calculator import MonthlyObjective
+
+
+class TestMonthlyObjective(TestCase):
+    def test_monthly_objective_calculation(self):
+        annual_objective = Decimal(12)
+
+        monthly_objective = MonthlyObjective(annual_objective)
+        assert monthly_objective.calculate() == Decimal(1)

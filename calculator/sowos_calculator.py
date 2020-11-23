@@ -16,7 +16,7 @@ class SowosCalculator:
                  guest_average: Decimal,
                  initial_investment: Decimal,
                  shared_commission: SharedCommission,
-                 kuspit_commission: Percentage().calculate(),
+                 kuspit_commission: Percentage,
                  monthly_objective: MonthlyObjective,
                  total_assets: TotalAssets,
                  total_guests: TotalGuests,
@@ -52,7 +52,9 @@ class SowosCalculator:
 
         periods = []
 
-        initial_investment_variable = initial_investment(1, self.__reinvest_profits, self.__monthly_contribution,
+        initial_investment_variable = initial_investment(1,
+                                                         self.__reinvest_profits,
+                                                         self.__monthly_contribution,
                                                          initial_amount=self.__initial_investment)
 
         profits_via_referrals_variable = profits_via_referrals()
