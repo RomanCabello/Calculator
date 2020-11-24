@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 
 
-from calculator.sowos_calculator import *
+from calculator import SowosCalculator
+from calculator import SharedCommission
+from calculator import Percentage
 
-calculator = SowosCalculator()
+
+
+
+
+if __name__ == '__main__':
+    shared_commission = SharedCommission()
+    calculator = SowosCalculator()
