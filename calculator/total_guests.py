@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
-from decimal import *
-from calculator.total_assets import TotalAssets
+from decimal import Decimal
+
+from .total_assets import TotalAssets
 
 
 class TotalGuests:

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 
-from decimal import *
-from calculator.monthly_objective import MonthlyObjective
-from calculator.shared_commission import SharedCommission
+from decimal import Decimal
+
+from .monthly_objective import MonthlyObjective
+from .shared_commission import SharedCommission
 
 
 class TotalAssets:

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
-from decimal import  Decimal
+from decimal import Decimal
 
-from calculator import MonthlyProfits
+from .monthly_profits import MonthlyProfits
 
 
 class AccumulatedProfits:

@@ -3,8 +3,7 @@
 
 from decimal import Decimal
 
-
-from calculator import Percentage
+from .percentage import Percentage
 
 
 class InitialInvestmentInterests:

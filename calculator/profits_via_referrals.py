@@ -3,20 +3,16 @@
 
 from decimal import Decimal
 
-from calculator import Interests
-from calculator import MonthlyGuests
-from calculator import Phase
-from calculator import SharedCommission
+from .monthly_guests import MonthlyGuests
+from .shared_commission import SharedCommission
 
 
 class ProfitsViaReferrals:
     def __init__(self,
-                 phase: Phase,
                  monthly_guests: MonthlyGuests,
                  guest_average: Decimal,
                  period: Decimal,
                  shared_commission: SharedCommission,):
-        self.__phase = phase
         self.__monthly_guests = monthly_guests
         self.__guest_average = guest_average
         self.__period = period

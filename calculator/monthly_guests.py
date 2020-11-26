@@ -2,7 +2,8 @@
 
 
 from decimal import Decimal
-from calculator.annual_guests import AnnualGuests
+
+from .annual_guests import AnnualGuests
 
 
 class MonthlyGuests:

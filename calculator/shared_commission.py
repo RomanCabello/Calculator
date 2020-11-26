@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
-from decimal import *
-from calculator.percentage import Percentage
+from decimal import Decimal
+
+from .percentage import Percentage
 
 
 class SharedCommission:

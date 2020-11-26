@@ -3,7 +3,7 @@
 
 from decimal import Decimal
 
-from calculator import Percentage
+from .percentage import Percentage
 
 
 class Interests:
@@ -18,4 +18,3 @@ class Interests:
         _interest_rate = self.__interest_rate.calculate()
         result = _profits_via_referrals * (Decimal(1) + _interest_rate / Decimal(12))
         return result
-

@@ -3,7 +3,7 @@
 
 from decimal import Decimal
 
-from calculator import MonthlyGuests
+from .monthly_guests import MonthlyGuests
 
 
 class ReferredAssets:

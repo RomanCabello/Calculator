@@ -3,9 +3,9 @@
 
 from decimal import Decimal
 
-from calculator import InitialInvestmentInterests
-from calculator import Interests
-from calculator import Points
+from .initial_investment_interests import InitialInvestmentInterests
+from .interests import Interests
+from .points import Points
 
 
 class FinalBalance:

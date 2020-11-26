@@ -14,9 +14,10 @@ class TestSharedCommission(TestCase):
         sowos_commission = Decimal(200)
         percentage_result = Decimal(5)
 
-        percentage= MagicMock(Percentage)
+        percentage = MagicMock(Percentage)
         percentage.calculate = Mock()
         percentage.calculate.return_value = percentage_result
 
-        shared_commission = SharedCommission(percentage, sowos_commission)
+        shared_commission = SharedCommission(percentage,
+                                             sowos_commission)
         assert shared_commission.calculate() == Decimal(10)
