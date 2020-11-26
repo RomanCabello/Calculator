@@ -6,10 +6,9 @@ from decimal import Decimal
 from calculator import AnnualGuests
 from calculator import MonthlyGuests
 from calculator import MonthlyObjective
+from calculator import Percentage
 from calculator import SowosCalculator
 from calculator import SharedCommission
-from calculator import Percentage
-from calculator import Points
 from calculator import TotalAssets
 from calculator import TotalGuests
 
@@ -30,7 +29,6 @@ if __name__ == '__main__':
     interest_rate = Percentage(Decimal(4))
     annual_guests = AnnualGuests(total_guests, Decimal(years))
     monthly_guests = MonthlyGuests(annual_guests)
-    points = Points()
 
     calculator = SowosCalculator(annual_objective,
                                  guest_average,
@@ -46,9 +44,8 @@ if __name__ == '__main__':
                                  monthly_guests,
                                  monthly_contribution,
                                  reinvest_profits,
-                                 membership_cost,
-                                 points)
+                                 membership_cost,)
 
     periods = calculator.generate_period_list(years)
     for period in periods:
-        period.display()
+        period.display_summary()

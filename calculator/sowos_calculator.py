@@ -40,8 +40,7 @@ class SowosCalculator:
                  monthly_guests: MonthlyGuests,
                  monthly_contribution: Decimal,
                  reinvest_profits: bool,
-                 membership_cost: Decimal,
-                 points: Points):
+                 membership_cost: Decimal,):
         self.__annual_objective = annual_objective
         self.__guest_average = guest_average
         self.__initial_amount = initial_amount
@@ -57,13 +56,14 @@ class SowosCalculator:
         self.__reinvest_profits = reinvest_profits
         self.__membership_cost = membership_cost
         self.__phase1_years = phase1_years
-        self.__points = points
 
     def generate_period_list(self, years: int):
         periods = []
 
         period_number = Decimal(1)
-        points_value = self.__points.calculate()
+
+        points = Points()
+        points_value = points.calculate()
 
         phase = Phase(period_number,
                       self.__phase1_years)
@@ -94,13 +94,13 @@ class SowosCalculator:
 
         final_balance = FinalBalance(initial_investment_interests,
                                      interests,
-                                     self.__points,
+                                     points,
                                      self.__membership_cost)
         final_balance_value = final_balance.calculate()
 
         monthly_profits = MonthlyProfits(initial_investment_interests,
                                          interests,
-                                         self.__points,
+                                         points,
                                          initial_investment_value)
         monthly_profits_value = monthly_profits.calculate()
 
@@ -175,13 +175,13 @@ class SowosCalculator:
 
             final_balance = FinalBalance(initial_investment_interests,
                                          interests,
-                                         self.__points,
+                                         points,
                                          self.__membership_cost)
             final_balance_value = final_balance.calculate()
 
             monthly_profits = MonthlyProfits(initial_investment_interests,
                                              interests,
-                                             self.__points,
+                                             points,
                                              initial_investment_value)
             monthly_profits_value = monthly_profits.calculate()
 

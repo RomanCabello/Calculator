@@ -72,7 +72,7 @@ class Period:
     def get_referred_assets(self):
         return self.__referred_assets
 
-    def display(self):
+    def display_summary(self):
         print("////////////////////////////////////////////////")
         print(f"Phase: {self.__phase}")
         print(f"Period number: {self.__period_number}")

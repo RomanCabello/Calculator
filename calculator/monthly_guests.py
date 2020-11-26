@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from decimal import Decimal
+from decimal import Decimal, ROUND_UP
 
 from .annual_guests import AnnualGuests
 
@@ -16,4 +16,4 @@ class MonthlyGuests:
     def calculate(self):
         _annual_guests = self.__annual_guests.calculate()
         result = _annual_guests / Decimal(12)
-        return result
+        return result.quantize(Decimal('1'), rounding=ROUND_UP)
