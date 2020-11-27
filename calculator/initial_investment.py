@@ -7,6 +7,9 @@ from decimal import Decimal
 class InitialInvestment:
     def __init__(self,
                  monthly_contribution: Decimal, ):
+        if not isinstance(monthly_contribution, Decimal):
+            raise ValueError(f"Parameter monthly_contribution: {monthly_contribution} is not an instance of Decimal")
+
         self.__monthly_contribution = monthly_contribution
 
     def calculate_first(self,

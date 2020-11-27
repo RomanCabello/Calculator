@@ -72,18 +72,3 @@ class Period:
     def get_referred_assets(self):
         return self.__referred_assets
 
-    def display_summary(self):
-        print("////////////////////////////////////////////////")
-        print(f"Phase: {self.__phase}")
-        print(f"Period number: {self.__period_number}")
-        print(f"Initial investment: {self.__initial_investment.quantize(Decimal('.0001'))}")
-        print(f"Initial investment interests: {self.__initial_investment_interests.quantize(Decimal('.0001'))}")
-        print(f"Profits via referrals: {self.__profits_via_referrals.quantize(Decimal('.0001'))}")
-        print(f"Interests: {self.__interests.quantize(Decimal('.0001'))}")
-        print(f"Membership cost: {self.__membership_cost.quantize(Decimal('.0001'))}")
-        print(f"Points: {self.__points.quantize(Decimal('.0001'))}")
-        print(f"Total interests: {self.__total_interests.quantize(Decimal('.0001'))}")
-        print(f"Final balance: {self.__final_balance.quantize(Decimal('.0001'))}")
-        print(f"Monthly profits: {self.__monthly_profits.quantize(Decimal('.0001'))}")
-        print(f"Accumulated_profits: {self.__accumulated_profits.quantize(Decimal('.0001'))}")
-        print(f"Referred assets: {self.__referred_assets.quantize(Decimal('.0001'))}")

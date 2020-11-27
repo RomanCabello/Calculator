@@ -14,6 +14,19 @@ class FinalBalance:
                  interests: Interests,
                  points: Points,
                  membership_cost: Decimal,):
+        if not isinstance(initial_investment_interests, InitialInvestmentInterests):
+            raise ValueError(f"Parameter initial_investment_interests: {initial_investment_interests} is not"
+                             f"an instance of InitialInvestmentInterests")
+
+        if not isinstance(interests, Interests):
+            raise ValueError(f"Parameter interests: {interests} is not an instance of Interests")
+
+        if not isinstance(points, Points):
+            raise ValueError(f"Parameter points: {points} is not an instance of Points")
+
+        if not isinstance(membership_cost, Decimal):
+            raise ValueError(f"Parameter membership_cost: {membership_cost} is not an instance of Decimal")
+
         self.__initial_investment_interests = initial_investment_interests
         self.__interests = interests
         self.__points = points

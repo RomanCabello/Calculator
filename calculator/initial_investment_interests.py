@@ -10,6 +10,12 @@ class InitialInvestmentInterests:
     def __init__(self,
                  initial_investment: Decimal,
                  interest_rate: Percentage):
+        if not isinstance(initial_investment, Decimal):
+            raise ValueError(f"Parameter initial_investment: {initial_investment} is not an instance of Decimal")
+
+        if not isinstance(interest_rate, Percentage):
+            raise ValueError(f"Parameter interest_rate: {interest_rate} is not an instance of Percentage")
+
         self.__initial_investment = initial_investment
         self.__interest_rate = interest_rate
 
